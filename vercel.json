@@ -7,14 +7,12 @@
     "builds": [
         {
             "src": "/api/index.php",
-            "use": "vercel-php@0.6.0",
+            "use": "vercel-php@0.5.2",
             "config": {
-                "php.ini": {
-                    "extension_dir": "/tmp",
-                    "extension": ["openssl.so"]
-                },
-                "runtime": {
-                    "phpVersion": "8.2"
+                "composer": true,
+                "php": {
+                    "version": "8.1",
+                    "composerVersion": "2"
                 }
             }
         },
@@ -52,6 +50,6 @@
         "SESSION_DRIVER": "cookie",
         "COMPOSER_ALLOW_SUPERUSER": "1",
         "COMPOSER_HOME": "/tmp/.composer",
-        "COMPOSER_VENDOR_DIR": "/tmp/vendor"
+        "COMPOSER_VENDOR_DIR": "vendor"
     }
 }
