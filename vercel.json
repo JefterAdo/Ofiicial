@@ -4,15 +4,24 @@
     "buildCommand": "npm run build",
     "outputDirectory": "public",
     "installCommand": "npm install",
-    "functions": {
-        "api/*.php": {
-            "runtime": "vercel-php@0.6.0"
+    "builds": [
+        {
+            "src": "/api/index.php",
+            "use": "vercel-php@0.6.0"
+        },
+        {
+            "src": "/public/**",
+            "use": "@vercel/static"
         }
-    },
+    ],
     "routes": [
         {
             "src": "/build/(.*)",
             "dest": "/public/build/$1"
+        },
+        {
+            "src": "/(css|js|images|fonts|favicon)/(.*)",
+            "dest": "/public/$1/$2"
         },
         {
             "src": "/(.*)",
