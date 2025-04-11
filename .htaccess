@@ -1,0 +1,35 @@
+# Redirection vers le dossier public
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Protection des fichiers sensibles
+<FilesMatch "^\.env|composer\.json|composer\.lock|package\.json|package-lock\.json|webpack\.mix\.js|yarn\.lock|README\.md|phpunit\.xml">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Désactiver l'affichage du contenu des répertoires
+Options -Indexes
+
+# Protection contre les attaques XSS
+<IfModule mod_headers.c>
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-Content-Type-Options "nosniff"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Compression Gzip
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule> 

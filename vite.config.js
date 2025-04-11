@@ -18,7 +18,6 @@ export default defineConfig({
         },
     },
     build: {
-        // Optimisations pour Vercel
         outDir: "public/build",
         assetsDir: "",
         manifest: true,
@@ -27,10 +26,14 @@ export default defineConfig({
                 manualChunks: undefined,
             },
         },
+        // Optimisations pour Hostinger
+        chunkSizeWarningLimit: 1000,
+        cssCodeSplit: true,
+        minify: "terser",
     },
     server: {
         hmr: {
-            host: "localhost",
+            host: "www.zertos.online",
         },
     },
 });
