@@ -10,7 +10,6 @@ export default defineConfig({
                 "resources/css/filament/admin/theme.css",
             ],
             refresh: true,
-            buildDirectory: "build",
         }),
     ],
     resolve: {
@@ -30,7 +29,8 @@ export default defineConfig({
         },
     },
     server: {
-        strictPort: true,
-        port: 3000,
+        hmr: {
+            host: "localhost",
+        },
     },
 });

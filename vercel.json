@@ -1,6 +1,9 @@
 {
     "version": 2,
     "framework": null,
+    "buildCommand": "npm install --force && npm run build",
+    "installCommand": "npm install --force",
+    "outputDirectory": "public",
     "functions": {
         "api/*.php": {
             "runtime": "vercel-php@0.4.0"
@@ -28,6 +31,7 @@
         "VIEW_COMPILED_PATH": "/tmp",
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
-        "SESSION_DRIVER": "cookie"
+        "SESSION_DRIVER": "cookie",
+        "NODE_OPTIONS": "--legacy-peer-deps"
     }
 }
